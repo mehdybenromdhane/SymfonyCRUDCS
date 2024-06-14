@@ -1,0 +1,31 @@
+
+
+<table align="center" border="1">
+<caption> List Authors</caption>
+
+<tr>
+    <td>Id</td>
+    <td>Username</td>
+    <td>Email</td>
+
+    <td>Action</td>
+</tr>
+
+{% for a in list %}
+<tr>
+<td>{{a.id}}</td>
+<td>{{a.username}}</td>
+<td>{{a.email}}</td>
+<td><a href="{{path('delete',{'id': a.id})}}">Delete</a>
+
+    <a href=""> Update</a>
+
+</td>
+
+</tr>
+{% endfor %}
+
+
+</table>
+
+<a href="{{path('add')}}"> add author</a>
