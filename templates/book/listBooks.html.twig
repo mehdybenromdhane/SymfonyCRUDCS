@@ -1,0 +1,51 @@
+
+
+<table align="center" border="1">
+    <caption>List of books</caption>
+
+    <tr>
+        <td>Référence</td>
+        <td>Author</td>
+        <td>Title</td>
+        <td>Category</td>
+        <td>Publication date</td>
+        <td>Published</td>
+    </tr>
+
+
+    {% set pubT = 0 %}
+    {% set pubN = 0 %}
+
+    {%  for b in listBooks   %}
+    {% if b.published == true %}
+    {% set pubT = pubT +1 %}
+
+
+
+    
+    <tr>
+
+        <td>{{b.ref}}</td>
+        <td>{{b.author}}</td>
+        <td>{{b.title}}</td>
+        <td>{{b.category}}</td>
+        <td>{{b.publicationDate | date}} </td>
+        <td>{{b.published}}</td>
+    </tr>
+
+    {% else %}
+
+    {% set pubN = pubN +1 %}
+    <h1>No books published !!! </h1>
+
+    {% endif %}
+    {% endfor %}
+
+    <h1> published  : {{pubT}}  </h1>
+    <h1>Notpublishedn  : {{pubN}} </h1>
+
+    
+
+
+    <a href="{{path('addbook')}}"> Add book</a>
+</table>

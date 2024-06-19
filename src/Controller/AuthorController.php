@@ -82,4 +82,25 @@ class AuthorController extends AbstractController
 
         return $this->redirectToRoute("listAuthors");
     }
+
+
+
+
+
+    #[Route('/update/{ide}', name: "modification")]
+    public function updateAuthor(AuthorRepository $repo, ManagerRegistry $manager, $ide, Request $request)
+    {
+        $em = $manager->getManager();
+        $author = $repo->find($ide);
+        $form = $this->createForm(AuthorType::class, $author);
+        $form->handleRequest($request);
+        if ($form->isSubmitted()) {
+
+            $em->persist($author);
+            $em->flush();
+
+            return $this->redirectToRoute("listAuthors");
+        }
+        return $this->renderForm("author/edit.html.twig", ['author' => $author, 'formEdit' => $form]);
+    }
 }

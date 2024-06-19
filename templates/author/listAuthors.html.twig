@@ -7,6 +7,7 @@
     <td>Id</td>
     <td>Username</td>
     <td>Email</td>
+    <td>Number of books</td>
 
     <td>Action</td>
 </tr>
@@ -16,9 +17,11 @@
 <td>{{a.id}}</td>
 <td>{{a.username}}</td>
 <td>{{a.email}}</td>
+
+<td>{{a.nb_books}}</td>
 <td><a href="{{path('delete',{'id': a.id})}}">Delete</a>
 
-    <a href=""> Update</a>
+    <a href="{{path('modification',{'ide':a.id})}}"> Update</a>
 
 </td>
 
