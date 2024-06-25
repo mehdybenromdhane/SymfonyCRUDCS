@@ -1,0 +1,43 @@
+
+
+<center>
+
+    <h1>Book</h1>
+<table>
+
+    <tr>
+    <td>Title :</td>
+    <td>  {{book.title}}</td>
+
+</tr>
+    <tr>
+        <td>Référence : </td>
+          <td>{{book.ref}}</td>
+
+</tr>
+    <tr>
+        
+        <td>Category : </td>
+    <td>{{book.category}}</td>
+
+</tr>
+    <tr>
+        
+        <td>publication Date</td>
+    <td>{{book.publicationDate | date}}</td>
+
+
+</tr>
+    <tr>
+        
+        <td>Author : </td>
+    <td> {{book.author}}</td>
+
+
+</tr>
+    <tr><td> Number of books by author :</td>
+    <td> {{book.author.nb_books}}</td></tr>
+</table>
+
+
+</center>

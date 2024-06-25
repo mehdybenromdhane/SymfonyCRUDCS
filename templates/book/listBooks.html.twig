@@ -1,5 +1,12 @@
 
 
+
+
+
+
+
+<a href="{{path('updateCat')}}"> Update category</a>
+
 <table align="center" border="1">
     <caption>List of books</caption>
 
@@ -10,11 +17,19 @@
         <td>Category</td>
         <td>Publication date</td>
         <td>Published</td>
+
+        <td>Action</td>
     </tr>
 
 
     {% set pubT = 0 %}
     {% set pubN = 0 %}
+
+    {% if listBooks | length ==0 %}
+
+    <h1>No books in database</h1>
+
+    {% else %}
 
     {%  for b in listBooks   %}
     {% if b.published == true %}
@@ -23,7 +38,7 @@
 
 
     
-    <tr>
+    <tr> 
 
         <td>{{b.ref}}</td>
         <td>{{b.author}}</td>
@@ -31,18 +46,30 @@
         <td>{{b.category}}</td>
         <td>{{b.publicationDate | date}} </td>
         <td>{{b.published}}</td>
+
+        <td>
+
+
+            <a href="{{path('detailsbook',{'id':b.ref})}}">Show</a>
+            <a href="{{path('deleteBook',{'id':b.ref})}}">Delete</a>
+            
+            <a href="{{path('editBook' , {'idBook': b.ref} )}}">Edit</a></td>
     </tr>
 
     {% else %}
 
     {% set pubN = pubN +1 %}
+
+
     <h1>No books published !!! </h1>
 
     {% endif %}
     {% endfor %}
 
-    <h1> published  : {{pubT}}  </h1>
-    <h1>Notpublishedn  : {{pubN}} </h1>
+
+    {% endif %}
+    <h1> number of  published books   : {{pubT}}  </h1>
+    <h1>Number of no published  books  : {{pubN}} </h1>
 
     
 

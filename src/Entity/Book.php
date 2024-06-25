@@ -23,7 +23,7 @@ class Book
     private ?\DateTimeInterface $publicationDate = null;
 
     #[ORM\Column]
-    private ?bool $published = null;
+    private ?bool $published = true;
 
     #[ORM\ManyToOne(inversedBy: 'books')]
     #[ORM\JoinColumn(nullable: false)]
@@ -99,5 +99,9 @@ class Book
         $this->author = $author;
 
         return $this;
+    }
+    public function __toString()
+    {
+        return  $this->getTitle(); // tu choisis l'attribut que tu veux retourner en string
     }
 }

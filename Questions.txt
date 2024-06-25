@@ -1,0 +1,17 @@
+
+
+
+
+
+Q1 : Update all books with category Science Fiction with Mystery
+
+Q2 : Number of books with category Science Fiction
+
+
+Q3 :search Author with number of books between min and max 
+
+
+Q4: Delete all auhtors with number of books = 0
+
+
+Q5: search books by author
