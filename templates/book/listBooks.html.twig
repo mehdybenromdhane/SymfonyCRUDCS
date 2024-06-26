@@ -2,6 +2,45 @@
 
 
 
+<center>
+    <form action="{{path('searchByAuthor')}}">
+
+
+        <label for="">Author</label>
+
+        <input type="text" name="username" id="">
+        <input type="submit" value="Search">
+    </form>
+</center>
+<form action="{{path('updateCat')}}">
+
+<label for="">Old Categroy</label>
+    <select name="oldcategory" id="">
+   <option value="Romance">Romance</option>
+   <option value="Bonjour">Bonjour</option>
+   <option value="Bonne nuit">Bonne nuit</option>
+
+    </select>
+
+    
+
+    <label for="">New Categroy</label>
+    <select name="newcategory" id="">
+
+        <option value="Salut">Salut</option>
+        <option value="Bonsoir">Bonsoir</option>
+        <option value="Taief">Taief</option>
+
+
+    </select>
+    <input type="submit" value="change">
+
+
+
+
+
+</form>
+
 
 
 

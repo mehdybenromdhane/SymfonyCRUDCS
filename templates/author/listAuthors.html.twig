@@ -1,5 +1,18 @@
 
 
+<a href="{{path('supprimer')}}">delete authors with number of books = 0 </a>
+
+
+<center>
+    <p>Search author by number of books</p>
+    <form action="{{path('minMax')}}">
+        <label>Min Number</label>
+        <input type="number" name="min">
+        <label>Max Number</label>
+        <input type="number" name="max">
+        <input type="submit" value="Search">
+    </form>
+</center>
 <table align="center" border="1">
 <caption> List Authors</caption>
 

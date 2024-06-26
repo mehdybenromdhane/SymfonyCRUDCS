@@ -69,14 +69,14 @@ class BookRepository extends ServiceEntityRepository
 
 
 
-    public function updateBook()
+    public function updateBook($oldcat, $newcat)
     {
 
         return $this->createQueryBuilder('b')
             ->update()->set('b.category', ':newCat')
-            ->setParameter('newCat', 'newcattt')
+            ->setParameter('newCat', $newcat)
             ->where('b.category LIKE  :cat')
-            ->setParameter('cat', 'Test')
+            ->setParameter('cat', $oldcat)
             ->getQuery()
             ->getResult();
     }
@@ -87,13 +87,14 @@ class BookRepository extends ServiceEntityRepository
         return  $em->createQuery('SELECT b from App\Entity\Book b order by b.title ASC ')->getResult();
     }
 
-    public function showAllBooksByAuthor($title)
+
+    public function searchBookByAuthor($name)
     {
         return $this->createQueryBuilder('b')
             ->join('b.author', 'a')
             ->addSelect('a')
-            ->where('b.title LIKE :title')
-            ->setParameter('title', '%' . $title . '%')
+            ->where('a.username LIKE :author')
+            ->setParameter('author', '%' . $name . '%')
             ->getQuery()
             ->getResult();
     }

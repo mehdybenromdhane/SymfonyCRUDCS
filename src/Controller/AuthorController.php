@@ -109,4 +109,31 @@ class AuthorController extends AbstractController
         }
         return $this->renderForm("author/edit.html.twig", ['author' => $author, 'formEdit' => $form]);
     }
+
+
+
+    #[Route('/searchMinMax', name: 'minMax')]
+    public function filterMinMax(Request $req, AuthorRepository $repo)
+    {
+
+
+        $min = $req->get('min');
+        $max = $req->get('max');
+        $authors =  $repo->minMaxNbBooks($min, $max);
+
+
+        return $this->render('author/listAuthors.html.twig', ['list' => $authors]);
+    }
+
+
+
+    #[Route('/supprimer', name: 'supprimer')]
+    public function supprimerAuteur(AuthorRepository $repo)
+    {
+
+
+        $repo->suppAuDQL();
+
+        return $this->redirectToRoute('listAuthors');
+    }
 }

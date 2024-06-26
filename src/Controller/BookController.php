@@ -61,15 +61,15 @@ class BookController extends AbstractController
         return $this->renderForm('book/listBooks.html.twig', ['listBooks' => $books]);
     }
 
-
-
-
-
     #[Route('/updateCat', name: "updateCat")]
-    public  function updateCat(BookRepository $repo)
+    public  function updateCat(BookRepository $repo, Request $req)
     {
 
-        $repo->updateBook();
+
+        $old = $req->get('oldcategory');
+        $new = $req->get('newcategory');
+
+        $repo->updateBook($old, $new);
 
         return $this->redirectToRoute('listbooks');
     }
@@ -117,5 +117,16 @@ class BookController extends AbstractController
         $book = $repo->find($id);
 
         return $this->render('book/details.html.twig', ['book' => $book]);
+    }
+
+
+    #[Route('/searchByAuthor', name: "searchByAuthor")]
+    public function searchByAuthor(BookRepository $repo, Request $req)
+    {
+
+        $name = $req->get('username');
+        $books = $repo->searchBookByAuthor($name);
+
+        return $this->render('book/listBooks.html.twig', ['listBooks' => $books]);
     }
 }
